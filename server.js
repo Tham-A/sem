@@ -29,29 +29,47 @@ app.listen('3000', () => {
     console.log('Server started on port 3000');
 });
 
+// If URL contains get citiies
 app.get('/getcities', (req,res) => {
+  // Variable sql that contains instructions to query the database
     let sql = 'SELECT * FROM city ';
+    // Variable that queries the database using the sql variable
     let query = db.query(sql, (err, results) => {
+      // Throws error if there is one
         if(err) throw err;
+        // Prints data in terminal 
         console.log(results);
+        // Displays message cities fetched in browser
         res.send('Cites fetched...');
     });
 })
 
+// If URL contains get contries
 app.get('/getcountries', (req,res) => {
+  // Variable sql that contains instructions to query the database
     let sql = 'SELECT * FROM country';
+    // Variable that queries the database using the sql variable
     let query = db.query(sql, (err, results) => {
+      // Throws error if there is one
         if(err) throw err;
+        // Prints data in terminal
         console.log(results);
+        // Displays message countries fetched in browser
         res.send('Countries fetched...');
     });
 })
 
+// If URL contains get language
 app.get('/getcountrylanguage', (req,res) => {
+  // Variable sql that contains instructions to query the database
     let sql = 'SELECT * FROM countrylanguage';
+    // Variable that queries the database using the sql variable
     let query = db.query(sql, (err, results) => {
+      // Throws error if there is one
         if(err) throw err;
+        // Prints data in terminal
         console.log(results);
+        // Displays message languages fetched in browser
         res.send('Languages fetched...');
     });
 })

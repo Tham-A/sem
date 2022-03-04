@@ -1,5 +1,6 @@
 // get sql module
 const mysql = require('mysql');
+const express = require('express');
 
 // Create a const variable that will connect with database
 const db = mysql.createConnection({
@@ -9,19 +10,43 @@ const db = mysql.createConnection({
   database: 'world'
 });
 
-// create a variable that holds instructions to access database
-// This will only print from city table
-let sql = `SELECT * FROM city`;
-
-// Query the database using instructions in sql variable
-db.query(sql, (error, results, fields) => {
-  // If there is an error it will print the error message
-  if (error) {
-    return console.error(error.message);
+db.connect((err) =>{
+  if(err){
+      throw err;
   }
-  // Else will print data in terminal
-  console.log(results);
+  console.log('my SQL connected...');
+
+});
+const app = express();
+
+app.listen('3000', () => {
+    console.log('Server started on port 3000');
 });
 
-// End the connection
-connection.end(); 
+app.get('/getcities', (req,res) => {
+    let sql = 'SELECT * FROM city ';
+    let query = db.query(sql, (err, results) => {
+        if(err) throw err;
+        console.log(results);
+        res.send('Cites fetched...');
+    });
+})
+
+app.get('/getcountries', (req,res) => {
+    let sql = 'SELECT * FROM country';
+    let query = db.query(sql, (err, results) => {
+        if(err) throw err;
+        console.log(results);
+        res.send('Countries fetched...');
+    });
+})
+
+app.get('/getcountrylanguage', (req,res) => {
+    let sql = 'SELECT * FROM countrylanguage';
+    let query = db.query(sql, (err, results) => {
+        if(err) throw err;
+        console.log(results);
+        res.send('Languages fetched...');
+    });
+})
+

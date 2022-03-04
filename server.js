@@ -10,16 +10,22 @@ const db = mysql.createConnection({
   database: 'world'
 });
 
-db.connect((err) =>{
+// Connect database to server
+db.connect((err) => {
+  // If there is an error it will throw the error
   if(err){
       throw err;
-  }
+    }
+    // Print message if connection is successful
   console.log('my SQL connected...');
 
 });
+// Create a variable of express type
 const app = express();
 
+// Choose port 3000 for the server to run on
 app.listen('3000', () => {
+      // Print message once connection is made
     console.log('Server started on port 3000');
 });
 

@@ -39,8 +39,8 @@ app.get('/getcities', (req,res) => {
         if(err) throw err;
         // Prints data in terminal 
         console.log(results);
-        // Displays message cities fetched in browser
-        res.send('Cites fetched...');
+        // Displays data from database
+        res.send(results);
     });
 })
 
@@ -54,8 +54,8 @@ app.get('/getcountries', (req,res) => {
         if(err) throw err;
         // Prints data in terminal
         console.log(results);
-        // Displays message countries fetched in browser
-        res.send('Countries fetched...');
+        // Displays data from database
+        res.send(results);
     });
 })
 
@@ -69,8 +69,8 @@ app.get('/getcountrylanguage', (req,res) => {
         if(err) throw err;
         // Prints data in terminal
         console.log(results);
-        // Displays message languages fetched in browser
-        res.send('Languages fetched...');
+        // Displays data from database
+        res.send(results);
     });
 })
 

@@ -9,7 +9,7 @@ WORKDIR /src
 COPY package*.json /src/
 
 # Ask npm to install the dependencies
-RUN npm install -g supervisor && npm install && npm install supervisor
+RUN npm install
 
 # Copy across all our files
 COPY . /src

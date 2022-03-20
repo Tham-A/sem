@@ -2,31 +2,20 @@
 const mysql = require('mysql');
 const express = require('express');
 
+// Create an express app
+var app = express();
+
 // Create a const variable that will connect with database
-const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'world'
-});
-
-// Connect database to server
-db.connect((err) => {
-  // If there is an error it will throw the error
-  if(err){
-      throw err;
-    }
-    // Print message if connection is successful
-  console.log('my SQL connected...');
-
-});
-// Create a variable of express type
-const app = express();
+const db = require('./services/db');
 
 // Choose port 3000 for the server to run on
 app.listen('3000', () => {
       // Print message once connection is made
-    console.log('Server started on port 3000');
+    console.log('Server starting on http://127.0.0.1:3000/');
+});
+
+app.get("/", function(req, res) {
+  res.send("Working");
 });
 
 // If URL contains get citiies
@@ -72,4 +61,21 @@ app.get('/getcountrylanguage', (req,res) => {
         // Displays data from database
         res.send(results);
     });
+  })
+
+  app.get('/country_pop_fromlarge', (req,res) => {
+  let sql = 'SELECT * FROM country ORDER BY Population DESC';
+  let query = db.query(sql, (err, results) => {
+    if(err) throw err;
+    console.log(results);
+    res.send(results);
+  });
+})
+
+app.get("/testing", function(req,res){
+  var sql = 'SELECT * FROM country ORDER BY Population DESC';
+  db.query(sql).then(results => {
+    console.log(results);
+    res.json(results)
+  });
 })

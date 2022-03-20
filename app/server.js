@@ -76,7 +76,7 @@ app.get('/getcountrylanguage', (req,res) => {
 
 app.get('/country-pop-descending', (req,res) =>{
     let sql = 'SELECT * FROM country ORDER BY Population DESC'
-    var output = '<table>';
+    var output = '<table border="lpx">';
     let query = db.query(sql, (err, results) => {
       for (var row of results) {
         output += '<tr>';

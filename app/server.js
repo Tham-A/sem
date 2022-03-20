@@ -73,3 +73,18 @@ app.get('/getcountrylanguage', (req,res) => {
         res.send(results);
     });
 })
+
+app.get('/country-pop-descending', (req,res) =>{
+    let sql = 'SELECT * FROM country ORDER BY Population DESC'
+    var output = '<table>';
+    let query = db.query(sql, (err, results) => {
+      for (var row of results) {
+        output += '<tr>';
+        output += '<td>' + row.Name + '<td>';
+        output += '<td>' + row.Population + '<td>';
+        output += '</tr>'
+    }
+    output += '</table>';
+    res.send(output);
+});
+})

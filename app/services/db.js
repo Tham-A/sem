@@ -14,6 +14,9 @@ const config = {
     queueLimit: 0,
     },
   };
+// Print message with config details so track outputs in terminal
+console.log('Connecting to database...');
+console.log({config});
   
   // Create pool using config data
   const pool = mysql.createPool(config.db);

@@ -78,6 +78,17 @@ app.get('/country-continent-pop-descending', (req,res) =>{
   });
 })
 
+app.get('/country-region-continent-pop-descending', (req,res) =>{
+  // Variable sql that contains instructions to query the database
+  var sql = 'SELECT * FROM country ORDER BY Region, Population DESC'
+  // Query the database
+  db.query(sql).then(results => {
+      // Send the results rows to the country template
+      // The rows will be in a variable called data
+      res.render('country', {'heading':'Countries in a region organised by largest population to smallest' ,data: results});
+  });
+})
+
 // Choose port 3000 for the server to run on
 app.listen('3000', () => {
 // Print message once connection is made

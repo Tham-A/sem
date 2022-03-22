@@ -4,6 +4,7 @@ services:
     build:
       context: .
     env_file: .env
+    command: supervisor -e '.' index.js
     environment:
       - DB_HOST=db
       - DB_PASSWORD=${DB_PASSWORD}

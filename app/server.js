@@ -4,12 +4,16 @@ const express = require('express');
 // Create express app
 var app = express();
 
+// Use the Pug templating engine
+app.set('view engine', 'pug');
+app.set('views', './app/views');
+
 // Get functions fro db.js file
 const db = require('./services/db');
 
 // Route for root
 app.get("/", function(req, res) {
-  res.send("Main Page");
+  res.render("index", {'title':'My index page', 'heading':'Database reports'});
 });
 
 // If route contains get citiies
@@ -55,23 +59,12 @@ app.get('/getcountrylanguage', (req,res) => {
 app.get('/country-pop-descending', (req,res) =>{
     // Variable sql that contains instructions to query the database
     var sql = 'SELECT * FROM country ORDER BY Population DESC'
-    // Variable to print table and append data
-    var output = '<table border="lpx">';
     // Query the database
     db.query(sql).then(results => {
-      // Loop and iterate throw every row
-      for (var row of results) {
-        // Format table and append data
-        output += '<tr>';
-        output += '<td>' + row.Name + '<td>';
-        output += '<td>' + row.Population + '<td>';
-        output += '</tr>'
-    }
-    // Close table
-    output += '</table>';
-    // Send out output
-    res.json(output);
-});
+        // Send the results rows to the country template
+        // The rows will be in a variable called data
+        res.render('country', {'heading':'Countries Ordered By Population From Highest To Lowest' ,data: results});
+    });
 })
 
 // Choose port 3000 for the server to run on

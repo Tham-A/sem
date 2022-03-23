@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-# https://www.youtube.com/watch?v=9zUHg7xjIqQ
-# Made with the help of this tutorial
-FROM node:17
-WORKDIR /sem
-# COPY package.json .
-RUN npm install
-COPY . .
-EXPOSE 3000
-CMD ["node", "server.js"]
-=======
 # Base image to use
 FROM node:latest
 
@@ -30,4 +19,3 @@ EXPOSE 3000
 
 # Run no-demon so files can be updated
 CMD ["supervisor", "-e",".","index.js"]
->>>>>>> develop

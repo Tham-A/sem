@@ -1,9 +1,11 @@
 version: '3.3'
 services:
-  app:
+  web:
     build:
-      context: .
+      context: ./
     env_file: .env
+    volumes:
+      - .:/src
     command: supervisor -e '.' index.js
     environment:
       - DB_HOST=db

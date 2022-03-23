@@ -1,0 +1,16 @@
+extends layout
+block content
+    - console.log(data)
+    .main-content
+    h1 #{heading}
+    table(border=1)
+        tr
+            th Name 
+            th Country 
+            th Population 
+
+        for row in data
+            tr
+                td #{row.Capital}
+                td #{row.Name}
+                td #{row.Population}

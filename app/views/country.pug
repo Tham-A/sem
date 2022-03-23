@@ -1,0 +1,22 @@
+extends layout
+block content
+    - console.log(data)
+    .main-content
+    h1 #{heading}
+    table(border=1)
+        tr 
+            th Code 
+            th Name 
+            th Continent 
+            th Region 
+            th Population 
+            th Capital
+
+        for row in data
+            tr
+                td #{row.Code}
+                td #{row.Name}
+                td #{row.Continent}
+                td #{row.Region}
+                td #{row.Population}
+                td #{row.Capital}

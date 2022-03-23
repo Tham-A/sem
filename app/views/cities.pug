@@ -1,0 +1,18 @@
+extends layout
+block content
+    - console.log(data)
+    .main-content
+    h1 #{heading}
+    table(border=1)
+        tr
+            th Name 
+            th Country 
+            th District
+            th Population 
+
+        for row in data
+            tr
+                td #{row.Name}
+                td #{row.CountryCode}
+                td #{row.District}
+                td #{row.Population}

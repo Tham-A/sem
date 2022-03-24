@@ -119,12 +119,34 @@ app.get('/cities-district-pop-descending', (req,res) =>{
 
 app.get('/capital-city-pop-descending', (req,res) =>{
   // Variable sql that contains instructions to query the database
-  var sql = 'SELECT * FROM country ORDER BY Population DESC'
+  var sql = "SELECT city.Name AS capitalname, country.Name AS countryname, city.Population AS capitalpopulation FROM country, city WHERE city.ID = country.Capital ORDER BY capitalpopulation DESC;"
   // Query the database
   db.query(sql).then(results => {
       // Send the results rows to the country template
       // The rows will be in a variable called data
-      res.render('country', {'heading':'Countries in the world organised by largest population to smallest' ,data: results});
+      res.render('capital', {'heading':'Capital Cities in the world organised by largest population to smallest' ,data: results});
+  });
+})
+
+app.get('/capital-city-continent-pop-descending', (req,res) =>{
+  // Variable sql that contains instructions to query the database
+  var sql = "SELECT city.Name AS capitalname, country.Name AS countryname, city.Population AS capitalpopulation, country.Continent FROM country, city WHERE city.ID = country.Capital ORDER BY country.Continent, capitalpopulation DESC;"
+  // Query the database
+  db.query(sql).then(results => {
+      // Send the results rows to the country template
+      // The rows will be in a variable called data
+      res.render('capital', {'heading':'Capital Cities in the world organised by largest population to smallest' ,data: results});
+  });
+})
+
+app.get('/capital-city-region-pop-descending', (req,res) =>{
+  // Variable sql that contains instructions to query the database
+  var sql = "SELECT city.Name AS capitalname, country.Name AS countryname, city.Population AS capitalpopulation, country.Region FROM country, city WHERE city.ID = country.Capital ORDER BY country.Region, capitalpopulation DESC;"
+  // Query the database
+  db.query(sql).then(results => {
+      // Send the results rows to the country template
+      // The rows will be in a variable called data
+      res.render('capital', {'heading':'Capital Cities in the world organised by largest population to smallest' ,data: results});
   });
 })
 

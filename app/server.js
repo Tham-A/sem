@@ -128,66 +128,6 @@ app.get('/capital-city-pop-descending', (req,res) =>{
   });
 })
 
-app.get('/country-pop-user-descending', (req,res) =>{
-  // Variable SQL instructions
-  var sql = 'SELECT * FROM country ORDER BY Population DESC'
-  // Gets data from database
-  db.query(sql).then(results => {
-      // This sends result rows to the country template
-      res.render('country', {'heading':'Countries in the world sorted by largest country population' ,data: results});
-  });
-})
-
-app.get('/country-continent-user-pop-descending', (req,res) =>{
-  // Variable SQL instructions
-  var sql = 'SELECT * FROM country ORDER BY Continent, Population DESC'
-  // Gets data from database
-  db.query(sql).then(results => {
-      // This sends results rows to country template
-      res.render('country', {'heading':'Countries in a continent sorted by largest population' ,data: results});
-  });
-})
-
-app.get('/country-region-pop-user-descending', (req,res) =>{
-  // Variable SQL instructions
-  var sql = 'SELECT * FROM country ORDER BY Region, Population DESC'
-  // Gets data from database
-  db.query(sql).then(results => {
-      // This sends results rows to country template
-      res.render('country', {'heading':'Countries in a region organised by which has the larger population' ,data: results});
-  });
-})
-
-app.get('/pop-living-in-and-out-of-cities-per-continent', (req,res) =>{
-  // Variable SQL instructions
-  var sql = 'SELECT * FROM city ORDER BY continent, Population DESC'
-  // Gets data from database
-  db.query(sql).then(results => {
-      // This sends results rows to city template
-      res.render('city', {'heading':'People living in cities per continent from largest to smallest population per city per continent' ,data: results});
-  });
-})
-
-app.get('/pop-living-in-and-out-of-cities-per-region', (req,res) =>{
-  // Variable SQL instructions
-  var sql = 'SELECT * FROM city ORDER BY Region, Population DESC'
-  // Gets data from database
-  db.query(sql).then(results => {
-      // This sends results rows to city template
-      res.render('city', {'heading':'People living in cities per region from largest to smallest population per city per region' ,data: results});
-  });
-})
-
-app.get('/pop-living-in-and-out-of-cities-per-country', (req,res) =>{
-  // Variable SQL instructions
-  var sql = 'SELECT * FROM city ORDER BY Country, Population DESC'
-  // Gets data from database
-  db.query(sql).then(results => {
-      // This sends results rows to city template
-      res.render('city', {'heading':'People living in cities per coutnry from largest to smallest population per city per country' ,data: results});
-  });
-})
-
 // Choose port 3000 for the server to run on
 app.listen('3000', () => {
 // Print message once connection is made

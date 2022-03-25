@@ -128,6 +128,17 @@ app.get('/capital-city-pop-descending', (req,res) =>{
   });
 })
 
+app.get('/country-pop-user-descending', (req,res) =>{
+  // Variable SQL instructions
+  var sql = 'SELECT * FROM country ORDER BY Population DESC'
+  // Gets data from database
+  db.query(sql).then(results => {
+      // This sends result rows to the country template
+      res.render('country', {'heading':'Countries in the world sorted by largest country population' ,data: results});
+  });
+})
+
+
 // Choose port 3000 for the server to run on
 app.listen('3000', () => {
 // Print message once connection is made

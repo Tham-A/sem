@@ -148,6 +148,16 @@ app.get('/country-continent-user-pop-descending', (req,res) =>{
   });
 })
 
+app.get('/country-region-pop-user-descending', (req,res) =>{
+  // Variable SQL instructions
+  var sql = 'SELECT * FROM country ORDER BY Region, Population DESC'
+  // Gets data from database
+  db.query(sql).then(results => {
+      // This sends results rows to country template
+      res.render('country', {'heading':'Countries in a region organised by which has the larger population' ,data: results});
+  });
+})
+
 
 // Choose port 3000 for the server to run on
 app.listen('3000', () => {

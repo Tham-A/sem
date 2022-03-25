@@ -158,6 +158,35 @@ app.get('/country-region-pop-user-descending', (req,res) =>{
   });
 })
 
+app.get('/pop-living-in-and-out-of-cities-per-continent', (req,res) =>{
+  // Variable SQL instructions
+  var sql = 'SELECT * FROM city ORDER BY continent, Population DESC'
+  // Gets data from database
+  db.query(sql).then(results => {
+      // This sends results rows to city template
+      res.render('city', {'heading':'People living in cities per continent from largest to smallest population per city per continent' ,data: results});
+  });
+})
+
+app.get('/pop-living-in-and-out-of-cities-per-region', (req,res) =>{
+  // Variable SQL instructions
+  var sql = 'SELECT * FROM city ORDER BY Region, Population DESC'
+  // Gets data from database
+  db.query(sql).then(results => {
+      // This sends results rows to city template
+      res.render('city', {'heading':'People living in cities per region from largest to smallest population per city per region' ,data: results});
+  });
+})
+
+app.get('/pop-living-in-and-out-of-cities-per-country', (req,res) =>{
+  // Variable SQL instructions
+  var sql = 'SELECT * FROM city ORDER BY Country, Population DESC'
+  // Gets data from database
+  db.query(sql).then(results => {
+      // This sends results rows to city template
+      res.render('city', {'heading':'People living in cities per coutnry from largest to smallest population per city per country' ,data: results});
+  });
+})
 
 // Choose port 3000 for the server to run on
 app.listen('3000', () => {

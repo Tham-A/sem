@@ -1,0 +1,30 @@
+extends layout
+block content
+    h1  Page for top populated countries from user input
+    - console.log(data)
+    .main-content
+    h1 #{heading}
+    table(border=1)
+        tr 
+            th Code 
+            th Name 
+            th Continent 
+            th Region 
+            th Population 
+            th Capital
+
+        for row in data
+            tr
+                td #{row.Code}
+                td #{row.Name}
+                td #{row.Continent}
+                td #{row.Region}
+                td #{row.Population}
+                td #{row.Capital}
+    
+    h2 Input the number of most popluated countries that you would like to see:
+    form(action='/add.note', method='POST')
+        input(type='hidden' name ='id' value=student.id)
+        testarea(name='note' rows=6 cols=50)
+        div
+        input(type='submit' value='Submit')

@@ -1,0 +1,10 @@
+extends layout
+block content
+    - console.log(data)
+    .main-content
+    h1 #{heading}
+    h2 Add a note about this student
+        form(action='/user-input', method='POST')
+            textarea(name='note' rows=2 cols=20)
+            div
+            input(type='submit' value='Submit')

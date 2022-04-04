@@ -127,7 +127,7 @@ class Queries {
     async getPopulationCountry() {
         var sql = 'SELECT country.Name AS name, country.Population AS Pop, SUM(city.Population) \
         AS InCities, (country.Population - SUM(city.Population)) AS OutCities FROM country, city WHERE \
-        city.CountryCode = country.Code GROUP BY country.Code ORDER BY PPC DESC;'
+        city.CountryCode = country.Code GROUP BY country.Code ORDER BY Pop DESC;'
         const results = await db.query(sql);
         var rows = [];
         for (var row of results) {

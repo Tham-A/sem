@@ -135,6 +135,31 @@ class Queries {
         }
         return rows;
     }
+
+    async getPopulationRegion() {
+        var sql = 'SELECT country.Region AS name, SUM(country.Population) AS Pop, SUM(city.Population) \
+        AS InCities, ((SUM(country.Population)-SUM(city.Population))) AS OutCities FROM country, city WHERE \
+        city.CountryCode = country.Code GROUP BY country.Region ORDER BY Pop DESC;'
+        const results = await db.query(sql);
+        var rows = [];
+        for (var row of results) {
+            rows.push(row);
+        }
+        return rows;
+    }
+
+    async getPopulationContinent() {
+        var sql = 'SELECT country.Continent AS name, SUM(country.Population) AS Pop, SUM(city.Population) \
+        AS InCities, ((SUM(country.Population)-SUM(city.Population))) AS OutCities FROM country, city WHERE \
+        city.CountryCode = country.Code GROUP BY country.Continent ORDER BY Pop DESC;'
+        const results = await db.query(sql);
+        var rows = [];
+        for (var row of results) {
+            rows.push(row);
+        }
+        return rows;
+    }
+        
 }
 
 module.exports = {

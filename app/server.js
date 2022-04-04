@@ -141,6 +141,28 @@ app.get('/population-country', (req,res) =>{
   });
 })
 
+app.get('/population-region', (req,res) =>{
+  // Create variable of Queries class
+  var user = new Queries;
+  // Call function within said class that holds query
+  user.getPopulationRegion().then(results => {
+      // Display results using capital pug template
+      res.render('population', {'heading':'The population of people, people living in cities, and people not living in cities in each \
+      region' ,data: results});
+  });
+})
+
+app.get('/population-continent', (req,res) =>{
+  // Create variable of Queries class
+  var user = new Queries;
+  // Call function within said class that holds query
+  user.getPopulationContinent().then(results => {
+      // Display results using capital pug template
+      res.render('population', {'heading':'The population of people, people living in cities, and people not living in cities in each \
+      continent' ,data: results});
+  });
+})
+
 app.get('/country-pop-user', (req,res) =>{
   // Display report page with input template
   res.render('input', {'heading':'Countries in the world organised by largest population to smallest with user input'});

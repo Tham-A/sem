@@ -135,7 +135,7 @@ class Queries {
         }
         return rows;
     }
-
+  
     async getPopulationRegion() {
         var sql = 'SELECT country.Region AS name, SUM(country.Population) AS Pop, SUM(city.Population) \
         AS InCities, ((SUM(country.Population)-SUM(city.Population))) AS OutCities FROM country, city WHERE \
@@ -159,7 +159,6 @@ class Queries {
         }
         return rows;
     }
-        
 }
 
 module.exports = {

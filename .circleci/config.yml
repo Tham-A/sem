@@ -4,22 +4,22 @@ jobs:
   build:
     working_directory: ~/public
     docker:
-    - image: circleci/node:16.14.0.
+      - image: circleci/node:10.15.3
     steps:
       - checkout
       - run:
           name: update-npm
-          command: "sudo nmp install-gnpm@latest"
+          command: "sudo npm install -gnpm@latest"
       - restore_cache:
-        key: dependency-cache-{{ checksum "package.json" }}
-      -run:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
           name: install-npm-wee
           command: npm install
-      -save_cache:
-        key: dependency-cache-{{ checksum "package.json" }}
-        paths:
-          - ./node_modules
-      -run:
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+      - run:
           name: test
           command: npm test
 
@@ -38,6 +38,6 @@ workflows:
           # This is the node version to use for the `cimg/node` tag
           # Relevant tags can be found on the CircleCI Developer Hub
           # https://circleci.com/developer/images/image/cimg/node
-          version: '16.14.0'
+          version: '16.10'
           # If you are using yarn, change the line below from "npm" to "yarn"
           pkg-manager: npm

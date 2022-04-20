@@ -39,7 +39,7 @@ test('Should return getCountryPop query', async () => {
     expect(recordset).toEqual(undefined)
   })
 
-test('Should return getCountryContPopUser query', async () => {
+/*test('Should return getCountryContPopUser query', async () => {
     const recordset = await testQuery(`
     SELECT * FROM country ORDER BY Continent, Population DESC LIMIT ?; 
     `)
@@ -53,7 +53,7 @@ test('Should return getCitiesPopUser query', async () => {
     expect(recordset).toEqual(undefined)
   })
 
-test('Should return getCitiesRegPopUser query', async () => {
+  test('Should return getCitiesRegPopUser query', async () => {
     const recordset = await testQuery(`
     SELECT DISTINCT city.* FROM city INNER JOIN country ON \
     city.CountryCode = country.Code ORDER BY country.Region, \
@@ -61,6 +61,6 @@ test('Should return getCitiesRegPopUser query', async () => {
     `)
     expect(recordset).toEqual(undefined)
   })
-
+*/
 
   

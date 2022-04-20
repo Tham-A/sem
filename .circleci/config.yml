@@ -4,7 +4,7 @@ jobs:
   build:
     working_directory: ~/public
     docker:
-    - image: circleci/node:10.15.3
+    - image: circleci/node:16.14.0.
     steps:
       - checkout
       - run:
@@ -13,15 +13,15 @@ jobs:
       - restore_cache:
         key: dependency-cache-{{ checksum "package.json" }}
       -run:
-        name: install-npm-wee
-        command: npm install
+          name: install-npm-wee
+          command: npm install
       -save_cache:
         key: dependency-cache-{{ checksum "package.json" }}
         paths:
           - ./node_modules
       -run:
-        name: test
-        command: npm test
+          name: test
+          command: npm test
 
 # Orbs are reusable packages of CircleCI configuration that you may share across projects, enabling you to create encapsulated, parameterized commands, jobs, and executors that can be used across multiple projects.
 # See: https://circleci.com/docs/2.0/orb-intro/
@@ -38,6 +38,6 @@ workflows:
           # This is the node version to use for the `cimg/node` tag
           # Relevant tags can be found on the CircleCI Developer Hub
           # https://circleci.com/developer/images/image/cimg/node
-          version: '16.10'
+          version: '16.14.0'
           # If you are using yarn, change the line below from "npm" to "yarn"
           pkg-manager: npm

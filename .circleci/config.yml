@@ -13,8 +13,10 @@ jobs:
       - restore_cache:
         key: dependency-cache-{{ checksum "package.json" }}
       -run:
+        name: test
         name: install-npm-wee
         command: npm install
+        command: npm test
       -save_cache:
         key: dependency-cache-{{ checksum "package.json" }}
         paths:

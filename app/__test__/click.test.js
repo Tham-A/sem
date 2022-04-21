@@ -26,7 +26,7 @@ describe("Click link to Report 2", () => {
 })
 
 describe("Click link to Report 4", () => {
-  test.todo("Should follow link to report"), () => {
+  test.todo("Should follow link to report for cities-pop-user"), () => {
     const input = [
       {id: 4, url: "localhost:3000/cities-pop-user"}
     ];
@@ -36,7 +36,7 @@ describe("Click link to Report 4", () => {
 })
 
 describe("Click link to Report 8", () => {
-  test.todo("Should follow link to report"), () => {
+  test.todo("Should follow link to report for cities population per district"), () => {
     const input = [
       {id: 8, url: "localhost:3000/cities-district-pop-user"}
     ];
@@ -46,7 +46,7 @@ describe("Click link to Report 8", () => {
 })
 
 describe("Click link to Report 10", () => {
-  test.todo("Should follow link to report"), () => {
+  test.todo("Should follow link to captial cities population per continent"), () => {
     const input = [
       {id: 10, url: "localhost:3000/capital-city-continent-pop-user"}
     ];
@@ -56,7 +56,7 @@ describe("Click link to Report 10", () => {
 })
 
 describe("Click link to Report 11", () => {
-  test.todo("Should follow link to report"), () => {
+  test.todo("Should follow link to report for capital city population per region"), () => {
     const input = [
       {id: 11, url: "localhost:3000/capital-city-region-pop-user"}
     ];

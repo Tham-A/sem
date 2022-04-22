@@ -1,0 +1,53 @@
+extends layout
+block content
+    style.
+        body {
+            background-image: url(/earth4.jpg);
+            background-size: cover;
+            background-position: center
+        }
+        div.top {
+            display: flex;
+            justify-content: center;
+            position: relative
+        }
+        button {
+            width: 120px;
+            height: 50px;
+            border-radius: 12px;
+            position: absolute;
+            left: 20px;
+            margin-top : 20px;
+            background-color : #238636;
+            font-size : 14px;
+            color : #d9f4f3
+        }
+        h1 {
+            text-align: center;
+            color: #aec5d9
+        }
+        a {
+            color: #aec5d9;
+            font-size: 15.5px;
+        }
+        div.box {
+            text-align: center;
+            font-size: 20px;
+        }
+    div.top
+        h1 #{heading}
+        form(method="get" action="/")
+            button(type="submit") Home Page
+    div.box
+        p 
+            a(href='/country-pop') Report 1: All the countries in the world organised by largest population to smallest
+        p 
+            a(href='/country-continent-pop') Report 2: All the countries in a continent organised by largest population to smallest
+        p 
+            a(href='/country-region-pop') Report 3: All the countries in a region organised by largest population to smallest
+        p 
+            a(href='/country-pop-user') Report 4: The top `N` populated countries in the world where `N` is provided by the user
+        p 
+            a(href='/country-continent-pop-user') Report 5: The top `N` populated countries in a continent where `N` is provided by the user
+        p 
+            a(href='/country-region-pop-user') Report 6: The top `N` populated countries in a region where `N` is provided by the user

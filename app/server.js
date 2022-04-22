@@ -1,5 +1,6 @@
 // get sql module
 const express = require('express');
+const path = require('path');
 
 // Create express app
 var app = express();
@@ -7,6 +8,8 @@ var app = express();
 // Use the Pug templating engine
 app.set('view engine', 'pug');
 app.set('views', './app/views');
+
+app.use(express.static(path.join(__dirname, 'static')));
 
 // Get functions fro db.js file
 const db = require('./services/db');
@@ -165,57 +168,57 @@ app.get('/population-continent', (req,res) =>{
 
 app.get('/country-pop-user', (req,res) =>{
   // Display report page with input template
-  res.render('input', {'heading':'Countries in the world organised by largest population to smallest with user input'});
+  res.render('input', {'heading':'Top N Countries in the world organised by largest population to smallest'});
 });
 
 app.get('/country-continent-pop-user', (req,res) =>{
   // Display report page with input template
-  res.render('input', {'heading':'Countries in a continent organised by largest population to smallest with user input'});
+  res.render('input', {'heading':'Top N Countries in a continent organised by largest population to smallest'});
 });
 
 app.get('/country-region-pop-user', (req,res) =>{
   // Display report page with input template
-  res.render('input', {'heading':'Countries in a region organised by largest population to smallest with user input'});
+  res.render('input', {'heading':'Top N Countries in a region organised by largest population to smallest'});
 });
 
 app.get('/cities-pop-user', (req,res) =>{
   // Display report page with input template
-  res.render('input', {'heading':'Cities in the world organised by largest population to smallest with user input'});
+  res.render('input', {'heading':'Top N Cities in the world organised by largest population to smallest'});
 });
 
 app.get('/cities-continent-pop-user', (req,res) =>{
   // Display report page with input template
-  res.render('input', {'heading':'Cities in a continent organised by largest population to smallest with user input'});
+  res.render('input', {'heading':'Top N Cities in a continent organised by largest population to smallest'});
 });
 
 app.get('/cities-region-pop-user', (req,res) =>{
   // Display report page with input template
-  res.render('input', {'heading':'Cities in a region organised by largest population to smallest with user input'});
+  res.render('input', {'heading':'Top N Cities in a region organised by largest population to smallest'});
 });
 
 app.get('/cities-country-pop-user', (req,res) =>{
   // Display report page with input template
-  res.render('input', {'heading':'Cities in a country organised by largest population to smallest with user input'});
+  res.render('input', {'heading':'Top N Cities in a country organised by largest population to smallest'});
 });
 
 app.get('/cities-district-pop-user', (req,res) =>{
   // Display report page with input template
-  res.render('input', {'heading':'Cities in a district organised by largest population to smallest with user input'});
+  res.render('input', {'heading':'Top N Cities in a district organised by largest population to smallest'});
 });
 
 app.get('/capital-city-pop-user', (req,res) =>{
   // Display report page with input template
-  res.render('input', {'heading':'Capital Cities in the world organised by largest population to smallest with user input'});
+  res.render('input', {'heading':'Top N Capital Cities in the world organised by largest population to smallest'});
  });
 
 app.get('/capital-city-continent-pop-user', (req,res) =>{
   // Display report page with input template
-  res.render('input', {'heading':'Capital Cities in a continent organised by largest population to smallest with user input'});
+  res.render('input', {'heading':'Top N Capital Cities in a continent organised by largest population to smallest'});
 });
 
 app.get('/capital-city-region-pop-user', (req,res) =>{
   // Display report page with input template
-  res.render('input', {'heading':'Capital Cities in a region organised by largest population to smallest with user input'});
+  res.render('input', {'heading':'Top N Capital Cities in a region organised by largest population to smallest'});
 });
 
 app.post('/user-input', function (req, res) {
@@ -316,6 +319,26 @@ app.post('/user-input', function (req, res) {
     }
   }
   else { console.log("You have run into some error");}
+});
+
+app.get('/country', (req,res) =>{
+  // Display report page with input template
+  res.render('index-country', {'heading':'Country Reports'});
+});
+
+app.get('/city', (req,res) =>{
+  // Display report page with input template
+  res.render('index-cities', {'heading':'City Reports'});
+});
+
+app.get('/capitalcity', (req,res) =>{
+  // Display report page with input template
+  res.render('index-capitalcities', {'heading':'Capital City Reports'});
+});
+
+app.get('/population', (req,res) =>{
+  // Display report page with input template
+  res.render('index-population', {'heading':'Population Reports'});
 });
 
 // Choose port 3000 for the server to run on

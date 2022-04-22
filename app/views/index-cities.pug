@@ -1,0 +1,62 @@
+extends layout
+block content
+    style.
+        body {
+            background-image: url(/earth4.jpg);
+            background-size: cover;
+            background-position: center
+        }
+        div.top {
+            display: flex;
+            justify-content: center;
+            position: relative;
+            height: 7%;
+        }
+        button {
+            width: 120px;
+            height: 50px;
+            border-radius: 12px;
+            position: absolute;
+            left: 20px;
+            margin-top : 20px;
+            background-color : #238636;
+            font-size : 14px;
+            color : #d9f4f3
+        }
+        h1 {
+            text-align: center;
+            color: #aec5d9
+        }
+        a {
+            color: #aec5d9;
+            font-size: 15.5px;
+        }
+        div.box {
+            text-align: center;
+            font-size: 20px;
+        }
+    div.top
+        h1 #{heading}
+        form(method="get" action="/")
+            button(type="submit") Home Page
+    div.box
+        p 
+            a(href='/cities-pop') Report 7: All the cities in the world organised by largest population to smallest
+        p 
+            a(href='/cities-continent-pop') Report 8: All the cities in a continent organised by largest population to smallest
+        p 
+            a(href='/cities-region-pop') Report 9: All the cities in a region organised by largest population to smallest
+        p 
+            a(href='/cities-country-pop') Report 10: All the cities in a country organised by largest population to smallest
+        p 
+            a(href='/cities-district-pop') Report 11: All the cities in a district organised by largest population to smallest
+        p 
+            a(href='/cities-pop-user') Report 12: The top `N` populated cities in the world where `N` is provided by the user
+        p 
+            a(href='/cities-continent-pop-user') Report 13: The top `N` populated cities in a continent where `N` is provided by the user    
+        p 
+            a(href='/cities-region-pop-user') Report 14: The top `N` populated cities in a region where `N` is provided by the user
+        p 
+            a(href='/cities-country-pop-user') Report 15: The top `N` populated cities in a country where `N` is provided by the user
+        p 
+            a(href='/cities-district-pop-user') Report 16: The top `N` populated cities in a district where `N` is provided by the user

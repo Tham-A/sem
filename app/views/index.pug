@@ -1,53 +1,41 @@
 extends layout
 block content
+    style.
+        body {
+            background-image: url(/earth4.jpg);
+            background-size: cover;
+            background-position: center
+        }
+        h1 {
+            text-align: center;
+            color: #aec5d9
+        }
+        a {
+            color: #aec5d9;
+            font-size: 15.5px;
+            //- color: linear-gradient(to bottom, #aec5d9 0%, #000066 100%);
+        }
+        div.buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 70%;
+        }
+        button {
+            width: 200px;
+            height: 100px;
+            font-size: 18px;
+            border-radius: 12px;
+            color: #aec5d9;
+            background-color: black
+        }
     h1 #{heading}
-    p 
-        a(href='/country-pop') Report 1: All the countries in the world organised by largest population to smallest
-    p 
-        a(href='/country-continent-pop') Report 2: All the countries in a continent organised by largest population to smallest
-    p 
-        a(href='/country-region-pop') Report 3: All the countries in a region organised by largest population to smallest
-    p 
-        a(href='/country-pop-user') Report 4: The top `N` populated countries in the world where `N` is provided by the user
-    p 
-        a(href='/country-continent-pop-user') Report 5: The top `N` populated countries in a continent where `N` is provided by the user
-    p 
-        a(href='/country-region-pop-user') Report 6: The top `N` populated countries in a region where `N` is provided by the user
-    p 
-        a(href='/cities-pop') Report 7: All the cities in the world organised by largest population to smallest
-    p 
-        a(href='/cities-continent-pop') Report 8: All the cities in a continent organised by largest population to smallest
-    p 
-        a(href='/cities-region-pop') Report 9: All the cities in a region organised by largest population to smallest
-    p 
-        a(href='/cities-country-pop') Report 10: All the cities in a country organised by largest population to smallest
-    p 
-        a(href='/cities-district-pop') Report 11: All the cities in a district organised by largest population to smallest
-    p 
-        a(href='/cities-pop-user') Report 12: The top `N` populated cities in the world where `N` is provided by the user
-    p 
-        a(href='/cities-continent-pop-user') Report 13: The top `N` populated cities in a continent where `N` is provided by the user
-    p 
-        a(href='/cities-region-pop-user') Report 14: The top `N` populated cities in a region where `N` is provided by the user
-    p 
-        a(href='/cities-country-pop-user') Report 15: The top `N` populated cities in a country where `N` is provided by the user
-    p 
-        a(href='/cities-district-pop-user') Report 16: The top `N` populated cities in a district where `N` is provided by the user
-    p 
-        a(href='/capital-city-pop') Report 17: All the capital cities in the world organised by largest population to smallest
-    p 
-        a(href='/capital-city-continent-pop') Report 18: All the capital cities in a continent organised by largest population to smallest
-    p 
-        a(href='/capital-city-region-pop') Report 19: All the capital cities in a region organised by largest to smallest
-    p 
-        a(href='/capital-city-pop-user') Report 20: The top `N` populated capital cities in the world where `N` is provided by the user
-    p 
-        a(href='/capital-city-continent-pop-user') Report 21: The top `N` populated capital cities in a continent where `N` is provided by the user
-    p 
-        a(href='/capital-city-region-pop-user') Report 22: The top `N` populated capital cities in a region where `N` is provided by the user
-    p 
-        a(href='/population-continent') Report 23: The population of people, people living in cities, and people not living in cities in each continent
-    p 
-        a(href='/population-region') Report 24: The population of people, people living in cities, and people not living in cities in each region
-    p 
-        a(href='/population-country') Report 25: The population of people, people living in cities, and people not living in cities in each country
+    div.buttons
+        form(method="get" action="/country")
+            button(type="submit") Country Reports   
+        form(method="get" action="/city")
+            button(type="submit") City Reports
+        form(method="get" action="/capitalcity")
+            button(type="submit") Capital City Reports
+        form(method="get" action="/population")
+            button(type="submit") Population Reports

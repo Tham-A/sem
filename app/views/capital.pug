@@ -2,7 +2,38 @@ extends layout
 block content
     - console.log(data)
     .main-content
-    h1 #{heading}
+    style.
+        div {
+            display: flex;
+            justify-content: center;
+            position: relative
+        }
+        h1 {
+            text-align: center;
+            font-size: 33px
+        }
+        table {
+            font-size : 22px;
+            border-color : #2a3037;
+            width : 70%;
+            margin-left : 15%;
+            margin-right : 15%
+        }
+        button {
+            width: 120px;
+            height: 50px;
+            border-radius: 12px;
+            position: absolute;
+            left: 0;
+            margin-top : 20px;
+            background-color : #238636;
+            font-size : 14px;
+            color : #d9f4f3
+        }
+    div
+        h1 #{heading}
+        form(method="get" action="/")
+            button(type="submit") Home Page
     table(border=1)
         tr
             th Name 
